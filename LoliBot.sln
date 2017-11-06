@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoliBot", "LoliBot\LoliBot.csproj", "{BB3B08D7-7280-4B46-BCD6-9D01F96C394A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB3B08D7-7280-4B46-BCD6-9D01F96C394A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3B08D7-7280-4B46-BCD6-9D01F96C394A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3B08D7-7280-4B46-BCD6-9D01F96C394A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3B08D7-7280-4B46-BCD6-9D01F96C394A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

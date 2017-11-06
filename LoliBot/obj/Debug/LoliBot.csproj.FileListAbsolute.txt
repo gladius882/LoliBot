@@ -1,0 +1,8 @@
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\bin\Debug\LoliBot.exe.config
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\bin\Debug\LoliBot.exe
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\bin\Debug\LoliBot.pdb
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\obj\Debug\LoliBot.csprojResolveAssemblyReference.cache
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\obj\Debug\LoliBot.MainForm.resources
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\obj\Debug\LoliBot.csproj.GenerateResource.Cache
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\obj\Debug\LoliBot.exe
+C:\Users\gladius882\Documents\SharpDevelop Projects\LoliBot\LoliBot\obj\Debug\LoliBot.pdb
