@@ -21,6 +21,7 @@ namespace LoliBot
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
 		private System.Windows.Forms.WebBrowser webBrowser1;
+		private System.Windows.Forms.ToolStripMenuItem abortToolStripMenuItem;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -47,6 +48,7 @@ namespace LoliBot
 			this.animeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.downloadAnimeInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.otakustreamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.abortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -68,7 +70,8 @@ namespace LoliBot
 			// animeToolStripMenuItem
 			// 
 			this.animeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.downloadAnimeInfoToolStripMenuItem});
+			this.downloadAnimeInfoToolStripMenuItem,
+			this.abortToolStripMenuItem});
 			this.animeToolStripMenuItem.Name = "animeToolStripMenuItem";
 			this.animeToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
 			this.animeToolStripMenuItem.Text = "Anime";
@@ -84,9 +87,16 @@ namespace LoliBot
 			// otakustreamToolStripMenuItem
 			// 
 			this.otakustreamToolStripMenuItem.Name = "otakustreamToolStripMenuItem";
-			this.otakustreamToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-			this.otakustreamToolStripMenuItem.Text = "otakustream";
+			this.otakustreamToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+			this.otakustreamToolStripMenuItem.Text = "otakustream.tv";
 			this.otakustreamToolStripMenuItem.Click += new System.EventHandler(this.OtakustreamToolStripMenuItemClick);
+			// 
+			// abortToolStripMenuItem
+			// 
+			this.abortToolStripMenuItem.Name = "abortToolStripMenuItem";
+			this.abortToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+			this.abortToolStripMenuItem.Text = "Abort";
+			this.abortToolStripMenuItem.Click += new System.EventHandler(this.AbortToolStripMenuItemClick);
 			// 
 			// statusStrip1
 			// 
@@ -104,7 +114,7 @@ namespace LoliBot
 			this.toolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
 			this.toolStripProgressBar1.Maximum = 45;
 			this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-			this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+			this.toolStripProgressBar1.Size = new System.Drawing.Size(120, 16);
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -135,6 +145,7 @@ namespace LoliBot
 			this.Name = "MainForm";
 			this.Text = "LoliBot";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace LoliBot
 {
@@ -20,7 +21,7 @@ namespace LoliBot
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		private Thread helperThread;
+		private Thread helperThread = null;
 		
 		public MainForm()
 		{
@@ -28,7 +29,7 @@ namespace LoliBot
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
-			
+
 			this.webBrowser1.Url = new Uri(String.Format("file://{0}/content/home.html", 
 			                                             Directory.GetCurrentDirectory()));
 			//
@@ -48,13 +49,13 @@ namespace LoliBot
 			using(WebClient client = new WebClient())
 			{
 				int maxPage = 45;
-//				this.toolStripProgressBar1.Maximum = maxPage;
 				
 				for(int i=1; i<=maxPage; i++)
 				{
-					try {
-						this.toolStripStatusLabel1.Text = "Downloading anime info from otakustream.tv...\t\t\t"+
-							i.ToString()+"/"+maxPage.ToString();
+//					try {
+					updateStatusLabel("Downloading anime info from otakustream.tv...\t\t\t"+
+					                  i.ToString()+"/"+maxPage.ToString());
+					
 						string response = client.DownloadString("http://otakustream.tv/anime/page/"+i.ToString());
 						
 						string[] lines = response.Split(
@@ -63,16 +64,77 @@ namespace LoliBot
 						);
 						
 						File.WriteAllLines("temp/otakustream"+i.ToString()+".html", lines);
-						this.toolStripProgressBar1.Value = i;
-					}
-					catch(Exception ex) {
-						this.toolStripStatusLabel1.Text = "Downloading anime info from otakustream, "+ex.Message;
-						break;
-					}
+						
+						
+						updateProgressBar(i);
+//					}
+//					catch(Exception ex) {
+//						MessageBox.Show(ex.Message, "Unexpeected error while downloading anime info",
+//						                MessageBoxButtons.OK, MessageBoxIcon.Error);
+//						
+//						this.toolStripStatusLabel1.Text = "Error, "+ex.Message;
+//						break;
+//					}
 				}
 				
 			}	
 		}
 		
+		private void AbortToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			try {
+				if(this.helperThread != null)
+					this.helperThread.Abort();
+				this.toolStripStatusLabel1.Text = "Aborted";
+			}
+			catch(Exception ex) {
+				this.toolStripStatusLabel1.Text = ex.Message;
+			}
+		}
+		
+		private void updateStatusLabel(string text)
+		{
+			if(this.statusStrip1.InvokeRequired)
+			{
+				this.statusStrip1.Invoke(
+					new MethodInvoker( () => this.toolStripStatusLabel1.Text = text));
+			}
+			else
+			{
+				this.toolStripStatusLabel1.Text = text;
+			}
+		}
+		
+		private void updateProgressBar(int value, int max = 0)
+		{
+			if(max != 0)
+			{
+				if(this.statusStrip1.InvokeRequired)
+				{
+					this.statusStrip1.Invoke(
+						new MethodInvoker( () => this.toolStripProgressBar1.Maximum = max));
+				}
+				else
+				{
+					this.toolStripProgressBar1.Maximum = max;
+				}
+			}
+			
+			if(this.statusStrip1.InvokeRequired)
+			{
+				this.statusStrip1.Invoke(
+					new MethodInvoker( () => this.toolStripProgressBar1.Value = value));
+			}
+			else
+			{
+				this.toolStripProgressBar1.Value = value;
+			}
+		}
+		
+		void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			Environment.Exit(0);
+		}
+
 	}
 }
